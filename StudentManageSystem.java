@@ -1,4 +1,4 @@
-package cn.itcast.system;
+package cqh.test.system;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -9,24 +9,24 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StudentManageSystem {
-	// ÊôĞÔ
+	// å±æ€§
 	private static Scanner sc = new Scanner(System.in);
 	private static ArrayList<Student> stus = new ArrayList<Student>();
 
 	public static void main(String[] args) throws IOException {
 
-		// ³ÖĞøÒ»µ©ÔËĞĞ Á¢¿ÌÖ´ĞĞ
+		// æŒç»­ä¸€æ—¦è¿è¡Œ ç«‹åˆ»æ‰§è¡Œ
 		readerArrayListToFile();
 
 		while (true) {
 
-			System.out.println("-----»¶Ó­Ê¹ÓÃÑ§Éú¹ÜÀíÏµÍ³-----");
-			System.out.println("1:²é¿´ËùÓĞÑ§Éú");
-			System.out.println("2:Ìí¼ÓÑ§Éú");
-			System.out.println("3:É¾³ıÑ§Éú");
-			System.out.println("4:ĞŞ¸ÄÑ§Éú");
-			System.out.println("5:ÍË³ö");
-			System.out.println("ÇëÊäÈëÄãµÄÑ¡Ôñ");
+			System.out.println("-----æ¬¢è¿ä½¿ç”¨å­¦ç”Ÿç®¡ç†ç³»ç»Ÿ-----");
+			System.out.println("1:æŸ¥çœ‹æ‰€æœ‰å­¦ç”Ÿ");
+			System.out.println("2:æ·»åŠ å­¦ç”Ÿ");
+			System.out.println("3:åˆ é™¤å­¦ç”Ÿ");
+			System.out.println("4:ä¿®æ”¹å­¦ç”Ÿ");
+			System.out.println("5:é€€å‡º");
+			System.out.println("è¯·è¾“å…¥ä½ çš„é€‰æ‹©");
 
 			String choice = sc.nextLine();
 
@@ -44,11 +44,11 @@ public class StudentManageSystem {
 				updateStudent();
 				break;
 			case "5":
-				System.out.println("ÍË³ö³ÌĞò,»¶Ó­ÏÂ´ÎÊ¹ÓÃ~~~");
+				System.out.println("é€€å‡ºç¨‹åº,æ¬¢è¿ä¸‹æ¬¡ä½¿ç”¨~~~");
 				System.exit(0);
 				break;
 			default:
-				System.out.println("ÊäÈëÓĞÎó,ÇëÖØĞÂÊäÈë");
+				System.out.println("è¾“å…¥æœ‰è¯¯,è¯·é‡æ–°è¾“å…¥");
 
 			}
 
@@ -56,7 +56,7 @@ public class StudentManageSystem {
 
 	}
 
-	// ¶¨ÒåÒ»¸ö·½·¨ ½«¼¯ºÏÖĞµÄÊı¾İĞ´µ½ÎÄ¼ş
+	// å®šä¹‰ä¸€ä¸ªæ–¹æ³• å°†é›†åˆä¸­çš„æ•°æ®å†™åˆ°æ–‡ä»¶
 	public static void writerArrayListToFile() throws IOException {
 		BufferedWriter bw = new BufferedWriter(new FileWriter("stus.txt"));
 
@@ -77,7 +77,7 @@ public class StudentManageSystem {
 
 	}
 
-	// ¶¨ÒåÒ»¸ö·½·¨ ½«ÎÄ¼şÖĞµÄÊı¾İĞ´µ½¼¯ºÏ
+	// å®šä¹‰ä¸€ä¸ªæ–¹æ³• å°†æ–‡ä»¶ä¸­çš„æ•°æ®å†™åˆ°é›†åˆ
 	public static void readerArrayListToFile() throws IOException {
 		BufferedReader br = new BufferedReader(new FileReader("stus.txt"));
 
@@ -103,26 +103,26 @@ public class StudentManageSystem {
 		if (stus.size() != 0) {
 			for (int i = 0; i < stus.size(); i++) {
 				Student stu = stus.get(i);
-				System.out.println("Ñ§ºÅ:\t\tĞÕÃû:\tÄêÁä:\tµØÖ·:\t");
+				System.out.println("å­¦å·:\t\tå§“å:\tå¹´é¾„:\tåœ°å€:\t");
 				
 				System.out.println(stu.getId() + "\t\t" + stu.getName() + "\t" + stu.getAge() + "\t" + stu.getAddress());
 			}
 		} else {
-			System.out.println("ÏÖÔÚÃ»ÓĞÑ§Éú¿ÉÒÔ²éÑ¯£¡");
+			System.out.println("ç°åœ¨æ²¡æœ‰å­¦ç”Ÿå¯ä»¥æŸ¥è¯¢ï¼");
 		}
 	}
 
 	public static void addStudent() throws IOException {
 		String id = null;
 
-		// ËÀÑ­»·
+		// æ­»å¾ªç¯
 		while (true) {
-			// ±ê¼Ç ÁíÍâ Ïàµ±ÓÚÃ¿´ÎÑ­»·ÖØĞÂ¸³ÖµÎªfalse
+			// æ ‡è®° å¦å¤– ç›¸å½“äºæ¯æ¬¡å¾ªç¯é‡æ–°èµ‹å€¼ä¸ºfalse
 			boolean flag = false;
-			// ÌáÊ¾ÊäÈëÊı¾İ
-			System.out.println("ÊäÈëÑ§ÉúID");
+			// æç¤ºè¾“å…¥æ•°æ®
+			System.out.println("è¾“å…¥å­¦ç”ŸID");
 			id = sc.nextLine();
-			// ±éÀú¼¯ºÏ ²é¿´ÊÇ·ñÖØ¸´
+			// éå†é›†åˆ æŸ¥çœ‹æ˜¯å¦é‡å¤
 			for (int i = 0; i < stus.size(); i++) {
 				Student stu = stus.get(i);
 				if (stu.getId().equals(id)) {
@@ -134,36 +134,36 @@ public class StudentManageSystem {
 			if (flag == false) {
 				break;
 			} else {
-				System.out.println("IDÖØ¸´!ÇëÖØĞÂÊäÈë.");
+				System.out.println("IDé‡å¤!è¯·é‡æ–°è¾“å…¥.");
 			}
 
 		}
 
-		System.out.println("ÊäÈëÑ§ÉúĞÕÃû");
+		System.out.println("è¾“å…¥å­¦ç”Ÿå§“å");
 		String name = sc.nextLine();
-		System.out.println("ÊäÈëÑ§ÉúÄêÁä");
+		System.out.println("è¾“å…¥å­¦ç”Ÿå¹´é¾„");
 		int age = sc.nextInt();
 		sc.nextLine();
-		System.out.println("ÊäÈëÑ§ÉúµØÖ·");
+		System.out.println("è¾“å…¥å­¦ç”Ÿåœ°å€");
 		String address = sc.nextLine();
 
-		// ½«Ñ§ÉúÏà¹ØµÄÊı¾İ ·â×°µ½Ñ§ÉúÀàÖĞ´¢´æ
+		// å°†å­¦ç”Ÿç›¸å…³çš„æ•°æ® å°è£…åˆ°å­¦ç”Ÿç±»ä¸­å‚¨å­˜
 		Student stu = new Student(id, name, age, address);
-		// ½«·â×°Íê³ÉµÄÑ§Éú¶ÔÏóÌí¼Óµ½Ñ§Éú¼¯ºÏÖĞ
+		// å°†å°è£…å®Œæˆçš„å­¦ç”Ÿå¯¹è±¡æ·»åŠ åˆ°å­¦ç”Ÿé›†åˆä¸­
 		stus.add(stu);
 
 		writerArrayListToFile();
 
-		System.out.println("Ìí¼ÓÑ§ÉúĞÅÏ¢³É¹¦£¡");
+		System.out.println("æ·»åŠ å­¦ç”Ÿä¿¡æ¯æˆåŠŸï¼");
 	}
 
 	public static void deleteStudent() throws IOException {
-		// ±ê¼Ç
+		// æ ‡è®°
 		int index = -1;
-		System.out.println("ÊäÈëÒªÉ¾³ıµÄÑ§ÉúÑ§ºÅ");
+		System.out.println("è¾“å…¥è¦åˆ é™¤çš„å­¦ç”Ÿå­¦å·");
 		String id = sc.nextLine();
 
-		// ±éÀúÑ§Éú¼¯ºÏ
+		// éå†å­¦ç”Ÿé›†åˆ
 		for (int i = 0; i < stus.size(); i++) {
 			Student stu = stus.get(i);
 			if (stu.getId().equals(id)) {
@@ -175,12 +175,12 @@ public class StudentManageSystem {
 		if (index != -1) {
 
 			stus.remove(index);
-			System.out.println("É¾³ı³É¹¦!");
+			System.out.println("åˆ é™¤æˆåŠŸ!");
 			writerArrayListToFile();
 
 		} else {
 
-			System.out.println("Ñ§ºÅÓĞÎó,ÇëÖØĞÂÊäÈë!");
+			System.out.println("å­¦å·æœ‰è¯¯,è¯·é‡æ–°è¾“å…¥!");
 
 		}
 	}
@@ -189,7 +189,7 @@ public class StudentManageSystem {
 
 		int index = -1;
 
-		System.out.println("ÊäÈëÒªĞŞ¸ÄµÄÑ§ÉúºÅ:");
+		System.out.println("è¾“å…¥è¦ä¿®æ”¹çš„å­¦ç”Ÿå·:");
 		String id = sc.nextLine();
 
 		for (int i = 0; i < stus.size(); i++) {
@@ -203,22 +203,22 @@ public class StudentManageSystem {
 
 		if (index != -1) {
 
-			System.out.println("ÊäÈëĞÕÃû");
+			System.out.println("è¾“å…¥å§“å");
 			String name = sc.nextLine();
-			System.out.println("ÊäÈëÄêÁä");
+			System.out.println("è¾“å…¥å¹´é¾„");
 			int age = Integer.parseInt(sc.nextLine());
-			System.out.println("ÊäÈëµØÖ·");
+			System.out.println("è¾“å…¥åœ°å€");
 			String address = sc.nextLine();
 
 			Student stu = new Student(id, name, age, address);
 
 			stus.set(index, stu);
-			System.out.println("ĞŞ¸Ä³É¹¦!");
+			System.out.println("ä¿®æ”¹æˆåŠŸ!");
 			writerArrayListToFile();
 
 		} else {
 
-			System.out.println("²éÎŞ´ËÈË,ÖØĞÂÊäÈë!");
+			System.out.println("æŸ¥æ— æ­¤äºº,é‡æ–°è¾“å…¥!");
 
 		}
 
